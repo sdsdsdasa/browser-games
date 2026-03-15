@@ -13,14 +13,19 @@ start chrome tictactoe.html
 
 ## Git & GitHub Workflow
 
-After every change:
-1. Update `README.md` to reflect what changed
-2. Commit with a clean, descriptive message (imperative mood)
-3. Push to origin
+Commit and push **frequently** — after every meaningful unit of work (new feature, bug fix, refactor, or any change that should be recoverable). Never leave significant work uncommitted. The goal is that if work is interrupted at any point, nothing is lost.
+
+For every commit+push:
+1. Update `README.md` if the change affects features, controls, or game descriptions
+2. **Scan the diff for sensitive information** before staging — reject anything containing: usernames, local file paths (e.g. `C:\Users\...`), machine names, tokens, passwords, or any personal/system details. Only game source code and documentation should ever be committed.
+3. Stage only the relevant files (never `git add .` blindly)
+4. Commit with a clean message in imperative mood describing *what* and *why*
+5. Push to origin immediately after committing
 
 ```bash
-git add <files>
-git commit -m "description"
+git add <specific-files>
+git diff --staged   # review before committing — check for sensitive info
+git commit -m "short imperative summary"
 git push
 ```
 
